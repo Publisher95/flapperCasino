@@ -16,6 +16,8 @@ typedef struct{
 	Card hand[MAX_HAND];
 } Player;
 
+Player initPlayer();
+
 void createDeck(Card newCard[]);
 
 void swap(Card *a, Card *b);

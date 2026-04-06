@@ -3,6 +3,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+Player initPlayer(){
+	Player player;
+	for(int i = 0; i < MAX_HAND; ++i){
+		player.hand[i].suite = 'n';
+		player.hand[i].value = 0;
+	}
+	return player;
+}
+
+
+
 void createDeck(Card newDeck[]){
 	
 	char suites[4] = {'D','H','C','S'};
@@ -36,17 +48,20 @@ void shuffleDeck(Card deck[]){
 
 Card deal(Card deck[]){
 	Card dealing;
-	Card null;
-	null.value = 0;
+	Card nullCard;
+	nullCard.suite = 'n';
+	nullCard.value = 0;
+
 
 	for(int i = 0; i < DECK_SIZE; ++i){
 		if(deck[i].value != 0){
 			dealing = deck[i];
+			deck[i].suite = 'n';
 			deck[i].value = 0;
 			return dealing;
 		}
 	}
-	return null;
+	return nullCard;
 }
 
 void printCard(Card card){

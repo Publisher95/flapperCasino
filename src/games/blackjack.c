@@ -3,14 +3,12 @@
 #include <time.h>
 #include <stdbool.h>
 
-#include "cardImplementation.h"
+#include "card.h"
 
 
 
 // This is the blackjack game implementation
 // there should be a max player count 
-
-// This allows for a quick init of the deck itself for each card only needing 
 
 
 bool hasBlackjack(Player person){
@@ -55,16 +53,37 @@ void blackjack(){
 		printf(" and ");
 		printCard(Player.hand[1]);
 
-		
+		print("\n\n\n");
+		if(hasBlackjack(dealer) && hasBlackjack(player)){
+			printf("It's a push! Dealer and Player have blackjack\n");
+		}
+		else if(hasBlackjack(dealer) || hasBlackjack(player)){
+			if(hasBlackjack(player)){
+				printf("Player wins the round!\n");
+			}
+			else{
+				printf("Dealer wins the round!\n");
+			}
+		}
+		else {
+			printf("Would you like to hit or stand?(d/s): ");
+
+			while(input != 'd' || input != 's'){
+			
+			}
+
+
+		}
 
 		
-		printf("Would you like to hit or stand?: ");
+		printf("Would you like to play again?(y/n): ");
+		scanf("%c",&input);
+
+		while(input != 'y' || input != 'n'){
+			printf("Invalid response.\n");
+			scanf("%c",&input);
+		}
 		
-
-		
-
-
-
 
 	}
 
