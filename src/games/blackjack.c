@@ -10,18 +10,13 @@
 // This is the blackjack game implementation
 // there should be a max player count 
 
+int totalHand(Player person){
 
-bool hasBlackjack(Player person){
 	
-	int highAce = 0;
-	int lowAce = 0; 
 
-	for (int i = 0; i < MAX_HAND; ++i){
-		highAce += (person.hand[i] == 1) ? (person.hand[i]+10) : person.hand[i];
-		lowAce += person.hand[i];
-		if(highAce > 21 && lowAce > 21) return false;
-	}
-	return true;
+
+
+
 }
 
 
@@ -32,28 +27,27 @@ void blackjack(){
 	int i;
 	while(input == 'y'){
 
-		Player dealer;
-		Player player;
-
+		Player dealer = initPlayer();
+		Player player = initPlayer();
 
 		createDeck(mainDeck);
 		shuffleDeck(mainDeck);
 		for(i = 0; i < SIZE_OF_HAND; ++i){
-			Dealer[i] = deal(mainDeck);
-			player1[i] = deal(mainDeck);
+			dealer.hand[i] = deal(mainDeck);
+			player.hand[i] = deal(mainDeck);
 		}
 
 		printf("The dealer has: ");
 		printCard(dealer.hand[0]);
 
-		print("\n\n\n");
+		printf("\n\n\n");
 
 		printf("You have: ");
 		printCard(player.hand[0]);
 		printf(" and ");
-		printCard(Player.hand[1]);
+		printCard(player.hand[1]);
 
-		print("\n\n\n");
+		printf("\n\n\n");
 		if(hasBlackjack(dealer) && hasBlackjack(player)){
 			printf("It's a push! Dealer and Player have blackjack\n");
 		}
@@ -67,9 +61,19 @@ void blackjack(){
 		}
 		else {
 			printf("Would you like to hit or stand?(d/s): ");
+			scanf(" %c", &input);
+			while(true){
 
-			while(input != 'd' || input != 's'){
-			
+				scanf(" %c", &input);
+				if(input == 'd'){
+					player.hand[i] = deal(mainDeck);
+					printCard(player.hand[i]);
+					++i;
+				}
+				else if(input == 's') break; 
+				else{
+					printf("Invalid option.\n");
+				}
 			}
 
 
@@ -77,11 +81,12 @@ void blackjack(){
 
 		
 		printf("Would you like to play again?(y/n): ");
-		scanf("%c",&input);
+		scanf(" %c", &input);
 
-		while(input != 'y' || input != 'n'){
+		while(input != 'y' && input != 'n'){
 			printf("Invalid response.\n");
-			scanf("%c",&input);
+			printf("Would you like to play again?(y/n): ");
+			scanf(" %c", &input);
 		}
 		
 

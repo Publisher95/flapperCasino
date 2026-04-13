@@ -1,7 +1,9 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-
-#ifndef TYPEDEFS_H
-#define TYPEDEFS_H
+#ifndef CARD_H
+#define CARD_H 
 
 #define SIZE_OF_HAND 2
 #define DECK_SIZE 52

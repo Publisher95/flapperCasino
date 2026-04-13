@@ -1,8 +1,8 @@
-#include "cardImplementation.h"
+#include "card.h"
 
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <time.h>
 
 Player initPlayer(){
 	Player player;
